@@ -54,101 +54,80 @@ function toggleFaq(btn) {
   const isOpen = item.classList.toggle('open');
   btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
+
+/* ── PREVIEW TEMPLATE CV ───────────────────────── */
 let pkgPreviewSrc = '';
 let pkgPreviewLabel = 'Template CV';
-
-function openPkgModal(label, showPreview) {
-  if (showPreview === undefined) showPreview = true;
-  pkgPreviewLabel = label;
-  document.getElementById('pkgModalTitle').textContent = label;
-
-  // Ambil gambar template dari kartu yang baru saja diklik (kalau ada)
-  const card = event && event.target ? event.target.closest('.pkg-preview-card') : null;
-  const img = card ? card.querySelector('img') : null;
-  pkgPreviewSrc = img ? img.getAttribute('src') : '';
-
-  const previewBtn = document.getElementById('pkgPreviewBtn');
-  if (previewBtn) previewBtn.style.display = (showPreview && pkgPreviewSrc) ? '' : 'none';
-
-  // Pre-fill pesan WhatsApp sesuai paket/template yang dipilih
-  const waBtn = document.getElementById('pkgModalWaBtn');
-  if (waBtn) {
-    const msg = 'Halo, saya mau tanya/pesan ' + label + ' 🙂';
-    waBtn.setAttribute('href', 'https://wa.me/6285850551566?text=' + encodeURIComponent(msg));
-  }
-
-  document.getElementById('pkgModalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+function openPkgModal(label) {
+    const modal = document.getElementById('pkgModalOverlay');
+    const title = document.getElementById('pkgModalTitle');
+    const previewImage = document.getElementById('pkgPreviewImage');
+    if (!modal || !previewImage) return;
+    pkgPreviewLabel = label || 'Template CV';
+    // Judul template
+    if (title) {
+        title.textContent = pkgPreviewLabel;
+    }
+    // Ambil kartu template yang diklik
+    const card = event.target.closest('.pkg-preview-card');
+    if (card) {
+        // Ambil gambar otomatis
+        const img = card.querySelector('img');
+        if (img) {
+            pkgPreviewSrc = img.currentSrc || img.src;
+            // LANGSUNG TAMPILKAN GAMBAR
+            previewImage.src = pkgPreviewSrc;
+            previewImage.alt = pkgPreviewLabel;
+        }
+    }
+    // Buka modal
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
 }
 function closePkgModal() {
-  document.getElementById('pkgModalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
+    const modal = document.getElementById('pkgModalOverlay');
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
 }
-
-function openPkgPreview() {
-  const previewImg = document.getElementById('pkgPreviewImg');
-  const previewTitle = document.getElementById('pkgPreviewTitle');
-  previewImg.src = pkgPreviewSrc;
-  previewImg.alt = 'Preview ' + pkgPreviewLabel;
-  previewTitle.textContent = pkgPreviewLabel;
-  document.getElementById('pkgPreviewOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+/* ── PREVIEW BUKTI WHATSAPP ───────────────────────── */
+function openWaProof(itemEl) {
+    const img = itemEl.querySelector('img');
+    if (!img) return;
+    pkgPreviewSrc = img.currentSrc || img.src;
+    pkgPreviewLabel = img.alt || 'Bukti Chat WhatsApp';
+    const previewImg = document.getElementById('previewImage');
+    const previewTitle = document.getElementById('previewTitle');
+    const overlay = document.getElementById('pkgPreviewOverlay');
+    if (previewImg) {
+        previewImg.src = pkgPreviewSrc;
+        previewImg.alt = pkgPreviewLabel;
+    }
+    if (previewTitle) {
+        previewTitle.textContent = pkgPreviewLabel;
+    }
+    if (overlay) {
+        overlay.classList.add('open');
+    }
+    document.body.style.overflow = 'hidden';
 }
 function closePkgPreview() {
-  document.getElementById('pkgPreviewOverlay').classList.remove('open');
-  // Balik ke modal pilihan kalau modal itu masih terbuka di belakang
-  const pkgModalOpen = document.getElementById('pkgModalOverlay').classList.contains('open');
-  document.body.style.overflow = pkgModalOpen ? 'hidden' : '';
+    const overlay = document.getElementById('pkgPreviewOverlay');
+    if (overlay) {
+        overlay.classList.remove('open');
+    }
+    document.body.style.overflow = '';
 }
-
-function openWaProof(itemEl) {
-  const img = itemEl.querySelector('img');
-  if (!img) return;
-  pkgPreviewSrc = img.getAttribute('src');
-  pkgPreviewLabel = img.getAttribute('alt') || 'Bukti Chat WhatsApp';
-  openPkgPreview();
-}
-
-function openPromoModal() {
-  document.getElementById('promoModalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closePromoModal() {
-  document.getElementById('promoModalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-  try { sessionStorage.setItem('promoModalShown', '1'); } catch (e) {}
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Escape') return;
-  closePkgPreview();
-  closePkgModal();
-  closePromoModal();
-  closeTestiPreview();
+/* ── ESC ───────────────────────── */
+document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    closePkgPreview();
+    closePkgModal();
+    closePromoModal();
+    if (typeof closeTestiPreview === 'function') {
+        closeTestiPreview();
+    }
 });
-
-// Tampilkan popup promo bulanan otomatis saat web dibuka (sekali per sesi browser)
-window.addEventListener('load', () => {
-  let alreadyShown = false;
-  try { alreadyShown = sessionStorage.getItem('promoModalShown') === '1'; } catch (e) {}
-  if (!alreadyShown) {
-    setTimeout(openPromoModal, 1000);
-  }
-});
-
-function testiStepAmount(grid) {
-  const card = grid.querySelector('.testi-card');
-  return card ? card.getBoundingClientRect().width + 20 : 300;
-}
-
-function scrollTesti(dir) {
-  const grid = document.getElementById('testiGrid');
-  if (!grid) return;
-  grid.scrollBy({ left: dir * testiStepAmount(grid), behavior: 'smooth' });
-}
-
-let testiAutoPaused = false;
-
 // ── AUTO GESER TESTIMONI (langsung pindah, bukan geser perlahan) ──
 (function initTestiAutoplay() {
   const grid = document.getElementById('testiGrid');
@@ -184,27 +163,160 @@ let testiAutoPaused = false;
 
   start();
 })();
-
 // ── KLIK TESTIMONI = LANGSUNG LIHAT PREVIEW BESAR ──────
-function openTestiPreview(cardEl) {
-  const stars = cardEl.querySelector('.testi-stars');
-  const text = cardEl.querySelector('.testi-text');
-  const avatar = cardEl.querySelector('.testi-avatar');
-  const name = cardEl.querySelector('.testi-name');
-  const role = cardEl.querySelector('.testi-role');
 
-  document.getElementById('testiPreviewStars').textContent = stars ? stars.textContent : '';
-  document.getElementById('testiPreviewText').textContent = text ? text.textContent : '';
-  document.getElementById('testiPreviewAvatar').textContent = avatar ? avatar.textContent : '';
-  document.getElementById('testiPreviewName').textContent = name ? name.textContent : '';
-  document.getElementById('testiPreviewRole').textContent = role ? role.textContent : '';
+const track = document.getElementById("testiTrack");
+let cards = [...track.querySelectorAll(".testi-card")];
+const GAP = 28;
+const SPEED = 650;
+const DELAY = 2500;
+let sliding = false;
 
-  testiAutoPaused = true;
-  document.getElementById('testiPreviewOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+/* Card tengah aktif */
+function setActive() {
+    cards = [...track.querySelectorAll(".testi-card")];
+    cards.forEach(card => card.classList.remove("active"));
+    if (cards[1]) {
+        cards[1].classList.add("active");
+    }
 }
-function closeTestiPreview() {
-  document.getElementById('testiPreviewOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-  testiAutoPaused = false;
+
+setActive();
+function nextSlide() {
+    if (sliding) return;
+    sliding = true;
+    const first = track.firstElementChild;
+    const width = first.offsetWidth + GAP;
+    track.style.transition = `transform ${SPEED}ms ease`;
+    track.style.transform = `translateX(-${width}px)`;
+    track.addEventListener("transitionend", function handler() {
+        track.removeEventListener("transitionend", handler);
+        // pindahkan card pertama ke belakang
+        track.appendChild(first);
+        // reset tanpa animasi
+        track.style.transition = "none";
+        track.style.transform = "translateX(0)";
+        // paksa browser render ulang
+        track.offsetHeight;
+        setActive();
+        sliding = false;
+    });
 }
+setInterval(nextSlide, DELAY);
+
+// ── NAVBAR ──────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections = document.querySelectorAll('section[id]');
+
+  // Klik menu
+  navLinks.forEach(link => {
+    link.addEventListener("click", function () {
+
+      navLinks.forEach(item => item.classList.remove("active"));
+      this.classList.add("active");
+
+      // Tutup menu di mobile
+      const navMenu = document.getElementById("navLinks");
+      if (navMenu && navMenu.classList.contains("open")) {
+        navMenu.classList.remove("open");
+      }
+
+    });
+  });
+
+  // Saat scroll halaman
+  function setActiveMenu() {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+      const sectionTop = section.offsetTop - 120;
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight
+      ) {
+        current = section.getAttribute("id");
+      }
+
+    });
+
+    navLinks.forEach(link => {
+
+      link.classList.remove("active");
+
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+
+    });
+
+  }
+
+  window.addEventListener("scroll", setActiveMenu);
+
+  // Jalankan saat pertama kali halaman dibuka
+  setActiveMenu();
+
+});
+
+// ── PROMO POP UP OTOMATIS ──────────────────────────────────
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        openPromoModal();
+    }, 1000);
+
+});
+
+
+
+// ── BUKA POP UP PROMO ──────────────────────────────────
+function openPromoModal() {
+    const modal = document.getElementById("promoModalOverlay");
+    if (!modal) return;
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+}
+
+// ── TUTUP POP UP PROMO ──────────────────────────────────
+function closePromoModal() {
+    const modal = document.getElementById("promoModalOverlay");
+    if (!modal) return;
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+}
+
+// ── DAFTAR HARGA ──────────────────────────────────
+function goCheckout(name,price){
+    localStorage.setItem("cartItems",JSON.stringify([{
+        name:name,
+        price:price
+    }]));
+
+    window.location.href="checkout.html";
+}
+
+
+function selectPackage(packageName, packagePrice){
+
+    localStorage.setItem(
+        "selectedPackage",
+        JSON.stringify({
+            name: packageName,
+            price: packagePrice
+        })
+    );
+
+    window.location.href =
+        "template.html?package=" +
+        encodeURIComponent(packageName) +
+        "&price=" +
+        encodeURIComponent(packagePrice);
+}
+
+
+
+

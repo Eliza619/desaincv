@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Checkout template CV DesainCV.TOP.">
+    <title>Checkout — DesainCV.TOP</title>
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="template-navbar">
+    <div class="template-navbar-inner">
+        <!-- LOGO FOTO -->
+        <a href="index.html" class="template-brand">
+            <img src="logo.png" alt="DesainCV.TOP" class="template-logo">
+            <span class="template-brand-name">
+                Desain<span>CV.TOP</span>
+            </span>
+        </a>
+
+        <!-- KEMBALI KE MODEL CV -->
+        <a href="template.html" class="back-to-model">
+            <span class="back-icon">←</span>
+            <span>
+                kembali ke template
+            </span>
+        </a>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<main class="checkout-page">
+    <div class="checkout-container">
+        <div class="checkout-progress">
+            <div class="progress-item active" id="progress1">
+                <span>1</span>
+                <small>Data</small>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-item" id="progress2">
+                <span>2</span>
+                <small>Pembayaran</small>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-item" id="progress3">
+                <span>3</span>
+                <small>Konfirmasi</small>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-item" id="progress4">
+                <span>✓</span>
+                <small>Selesai</small>
+            </div>
+        </div>
+
+        <!--CHECKOUT CARD -->
+        <section class="checkout-card">
+            <!-- STEP 1 — DATA -->
+            <div class="checkout-step active" id="stepCustomer">
+                <div class="step-number">STEP 01</div>
+                <div class="checkout-title">
+                    <span>✦ CHECKOUT</span>
+                    <h1>Data Pemesan</h1>
+                    <p>Lengkapi data diri kamu sebelum melanjutkan ke pembayaran.</p>
+                </div>
+
+                <!-- TEMPLATE TERPILIH -->
+                <div class="order-summary">
+                    <div class="summary-icon">🎨</div>
+                    <div class="summary-info">
+                        <small>Template yang dipilih</small>
+                        <strong id="summaryPackage">Memuat...</strong>
+                        <span id="summaryTemplate">Memuat template...</span>
+                    </div>
+                    <strong class="summary-price" id="summaryPrice"> Rp0 </strong>
+                </div>
+
+                <!-- FORM -->
+                <form id="customerForm">
+                    <div class="form-group">
+                        <label for="customerName">  Nama Lengkap </label>
+                        <input type="text" id="customerName" placeholder="Masukkan nama lengkap" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerPhone"> Nomor WhatsApp </label>
+                        <input type="tel" id="customerPhone" placeholder="08xxxxxxxxxx" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerEmail"> Email </label>
+                        <input type="email" id="customerEmail" placeholder="nama@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerNote">Catatan
+                            <span>(opsional)</span>
+                        </label>
+                        <textarea id="customerNote" placeholder="Contoh: ingin warna biru..."></textarea>
+                    </div>
+
+
+                    <button type="submit" class="checkout-primary"> Lanjut ke Pembayaran
+                        <span>→</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- STEP 2 — PEMBAYARAN -->
+            <div class="checkout-step" id="stepPayment">
+                <div class="step-number">STEP 02</div>
+                <div class="checkout-title">
+                    <span>✦ PEMBAYARAN</span>
+                    <h1>Lakukan Pembayaran</h1>
+                    <p>Transfer sesuai nominal pembayaran yang tertera di bawah.</p>
+                </div>
+
+                <!-- TOTAL -->
+                <div class="payment-total-box">
+                    <small> Total Pembayaran </small>
+                    <strong id="paymentTotal">Rp0</strong>
+                </div>
+
+                <!-- REKENING -->
+                <div class="bank-card">
+                    <div class="bank-top">
+                        <div>
+                            <small>Transfer ke rekening</small>
+                            <strong>Bank BCA</strong>
+                        </div>
+                        <div class="bank-logo"> BCA </div>
+                    </div>
+                    <div class="bank-number">
+                        <strong id="bankNumber">8545536907</strong>
+                        <button type="button" id="copyBankBtn">Salin</button>
+                    </div>
+                    <div class="bank-owner">a.n. DesainCV.TOP</div>
+                </div>
+
+                <!-- DETAIL -->
+                <div class="mini-order">
+                    <div>
+                        <span>Paket</span>
+                        <strong id="paymentPackage">-</strong>
+                    </div>
+                    <div>
+                        <span>Template</span>
+                        <strong id="paymentTemplate">-</strong>
+                    </div>
+                    <div>
+                        <span>Nama</span>
+                        <strong id="paymentCustomer">-</strong>
+                    </div>
+                    <div>
+                        <span>Total</span>
+                        <strong id="paymentAmount">Rp0</strong>
+                    </div>
+                </div>
+                <button type="button" class="checkout-primary" id="paymentDoneBtn">Saya Sudah Transfer
+                    <span>→</span>
+                </button>
+                <button type="button" class="checkout-secondary" id="backCustomerBtn">
+                    ← Kembali
+                </button>
+            </div>
+
+            <!-- STEP 3 — BUKTI -->
+            <div class="checkout-step" id="stepProof">
+                <div class="step-number">STEP 03</div>
+                <div class="checkout-title">
+                    <span>✦ KONFIRMASI</span>
+                    <h1>Upload Bukti Pembayaran </h1>
+                    <p>Upload screenshot atau foto bukti transfer kamu.</p>
+                </div>
+
+                <!-- RINGKASAN -->
+                <div class="order-summary">
+                    <div class="summary-icon">✓</div>
+                    <div class="summary-info">
+                        <small>Pesanan kamu</small>
+                        <strong id="proofPackage">-</strong>
+                        <span id="proofCustomer">-</span>
+                    </div>
+                    <strong class="summary-price" id="proofTotal"> Rp0</strong>
+                </div>
+
+                <!-- UPLOAD -->
+                <div class="upload-area">
+                    <div class="upload-title">
+                        <strong>Bukti Transfer</strong>
+                        <span> JPG, PNG, WEBP — maksimal 5 MB</span>
+                    </div>
+                    <label for="paymentProof" class="upload-box">
+                        <div class="upload-icon">↑</div>
+                        <strong id="fileName"> Pilih Bukti Pembayaran</strong>
+                        <span>Klik untuk memilih foto </span>
+                    </label>
+                    <input type="file" id="paymentProof" accept="image/jpeg,image/png,image/webp"hidden>
+                    <div class="proof-preview" id="proofPreview"></div>
+                </div>
+                <button type="button"class="checkout-primary"id="sendProofBtn">Kirim ke WhatsApp
+                    <span>→</span>
+                </button>
+                <button type="button"class="checkout-secondary"id="backPaymentBtn">
+                    ← Kembali
+                </button>
+            </div>
+
+            <!-- STEP 4 — SELESAI -->
+            <div class="checkout-step" id="stepSuccess">
+                <div class="success-content">
+                    <div class="success-icon">✓</div>
+                    <span class="success-label">✦ PESANAN TERKIRIM</span>
+                    <h1>Pesanan Berhasil!</h1>
+                    <p>Pesanan kamu sudah disiapkan.Silakan lanjutkan komunikasi dengan admin melalui WhatsApp.</p>
+                    <div class="success-order">
+                        <div>
+                            <span>Paket</span>
+                            <strong id="successPackage">-</strong>
+                        </div>
+                        <div>
+                            <span>Template</span>
+                            <strong id="successTemplate"> -</strong>
+                        </div>
+                        <div>
+                            <span>Nama</span>
+                            <strong id="successCustomer"> - </strong>
+                        </div>
+                        <div>
+                            <span>Total</span>
+                            <strong id="successTotal">Rp0</strong>
+                        </div>
+                    </div>
+                    <a href="#" id="whatsappButton" class="whatsapp-button" target="_blank">
+                        💬 Buka WhatsApp Admin
+                        <span>→</span>
+                    </a>
+                    <a href="index.html" class="finish-button">
+                        Kembali ke Website
+                    </a>
+                </div>
+            </div>
+        </section>
+        <div class="checkout-note">
+            🔒 Data pesananmu digunakan hanya untuk
+            proses pembuatan CV.
+        </div>
+    </div>
+</main>
+<script src="js/checkout.js"></script>
+</body>
+</html>

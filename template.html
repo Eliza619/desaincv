@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Koleksi template CV profesional, modern, premium, dan ATS Friendly dari DesainCV.TOP.">
+    <title>Pilih Template CV — DesainCV.TOP</title>
+    <link rel="stylesheet" href="css/template.css">
+</head>
+
+<body>
+
+<!-- NAVBAR TEMPLATE -->
+<nav class="template-navbar">
+    <div class="template-navbar-inner">
+
+        <!-- LOGO -->
+        <a href="index.html" class="template-brand">
+            <img src="logo.png" alt="DesainCV.TOP" class="template-logo">
+            <span class="template-brand-name">Desain<span>CV.TOP</span></span>
+        </a>
+
+        <!-- KEMBALI -->
+        <a href="index.html#model-cv" class="back-to-model">
+            <span class="back-icon">←</span>
+            <span>Kembali ke Model CV</span>
+        </a>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="templates-hero">
+    <div class="section-label">🎨 Koleksi Template CV</div>
+
+    <h1>
+        Pilih Template CV<br>
+        Favoritmu
+    </h1>
+
+    <p>
+        Temukan desain CV yang sesuai dengan kebutuhanmu.
+        Pilih berdasarkan kategori paket atau lihat seluruh
+        template yang tersedia.
+    </p>
+</section>
+
+<!-- TEMPLATE CONTENT -->
+<main class="templates-container">
+
+    <!-- TAB KATEGORI -->
+    <div class="template-tabs">
+
+        <button type="button" class="template-tab active" data-filter="all">
+            Semua Template
+        </button>
+
+        <button type="button" class="template-tab" data-filter="regular">
+            Paket Regular
+        </button>
+
+        <button type="button" class="template-tab" data-filter="premium">
+            Paket Premium
+        </button>
+
+        <button type="button" class="template-tab" data-filter="ats">
+            ATS Friendly
+        </button>
+
+        <button type="button" class="template-tab" data-filter="platinum">
+            Paket Platinum
+        </button>
+
+    </div>
+
+    <!-- JUDUL / JUMLAH TEMPLATE -->
+    <div class="category-heading">
+        <span id="templateCount">59 Template</span>
+    </div>
+
+    <!-- TEMPLATE GRID -->
+    <div class="template-grid" id="templateGrid"></div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-template" id="emptyTemplate">
+        Template pada kategori ini belum tersedia.
+    </div>
+
+</main>
+
+<!-- JAVASCRIPT TEMPLATE -->
+<script src="js/template.js"></script>
+
+<!-- AUTO OPEN PACKAGE -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const paket = urlParams.get("paket")?.toLowerCase();
+
+    if (!paket) {
+        return;
+    }
+
+    const targetTab = document.querySelector(
+        `.template-tab[data-filter="${paket}"]`
+    );
+
+    if (!targetTab) {
+        return;
+    }
+
+    setTimeout(function() {
+        targetTab.click();
+    }, 100);
+
+});
+</script>
+
+</body>
+</html>
