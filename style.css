@@ -1328,634 +1328,123 @@ white-space:nowrap;
 .footer-contact-item small{display:block;margin-bottom:2px;color:#94a3b8;font-size:10px;}
 .footer-contact-item strong{display:block;color:#0f172a;font-size:13px;}
 .footer-bottom{margin-top:26px;padding-top:16px;border-top:1px solid #edf2f7;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:#64748b;font-size:13px;}
-/* ── PROMO POP UP ─────────────────────────────────────────────── */
 
-.promo-modal-overlay{
-    position:fixed;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:12px;
-    background:rgba(15,23,42,.58);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    z-index:99999;
-    opacity:0;
-    visibility:hidden;
-    overflow:hidden;
-    transition:
-        opacity .35s ease,
-        visibility .35s ease;
+/* ── promo pop up ─────────────────────────────────────────────── */
+
+.promo-modal-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(15,23,42,.58);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:99999;opacity:0;visibility:hidden;overflow:hidden;transition:opacity .35s ease,visibility .35s ease}
+.promo-modal-overlay.open{opacity:1;visibility:visible}
+.promo-modal{position:relative;width:min(460px,94vw);max-height:calc(100dvh - 24px);padding:18px 20px 14px;box-sizing:border-box;background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:24px;box-shadow:0 30px 80px rgba(15,23,42,.22),0 0 0 1px rgba(255,255,255,.7);overflow:hidden;animation:promoPopup .35s cubic-bezier(.22,1,.36,1)}
+.promo-modal-close{position:absolute;top:12px;right:12px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:#f1f5f9;color:#2563eb;font-size:19px;cursor:pointer;z-index:10;box-shadow:0 8px 20px rgba(15,23,42,.08);transition:background .25s ease,color .25s ease,transform .25s ease}
+.promo-modal-close:hover{background:#2563eb;color:#fff;transform:rotate(90deg)}
+.promo-modal-close:active{transform:scale(.92)}
+.promo-modal-badge{width:max-content;margin:0 auto 8px;padding:7px 16px;border-radius:999px;background:#eff6ff;color:#2563eb;font-size:.78rem;font-weight:800;letter-spacing:.1px}
+.promo-modal-image{display:flex;justify-content:center;align-items:center;width:100%;margin:2px auto 8px}
+.promo-modal-image img{display:block;width:82%;max-width:300px;max-height:42dvh;height:auto;object-fit:contain;border-radius:14px;box-shadow:0 16px 35px rgba(15,23,42,.16);transition:transform .3s ease}
+.promo-modal-image img:hover{transform:translateY(-3px) scale(1.01)}
+.promo-modal-title{margin:0 0 4px;text-align:center;color:#0f172a;font-size:1.35rem;font-weight:900;line-height:1.2}
+.promo-modal-sub{max-width:360px;margin:0 auto 7px;text-align:center;color:#64748b;font-size:.82rem;line-height:1.4}
+.promo-countdown{width:100%;max-width:230px;margin:0 auto 4px;padding:5px 10px 6px;box-sizing:border-box;text-align:center;background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(59,130,246,.035));border:1px solid rgba(59,130,246,.18);border-radius:12px}
+.promo-countdown span{display:block;margin-bottom:1px;color:#64748b;font-size:.58rem;font-weight:700;letter-spacing:.2px}
+.promo-countdown strong{display:block;color:#2563eb;font-size:1.05rem;font-weight:900;letter-spacing:1.8px;line-height:1.1;font-variant-numeric:tabular-nums}
+.promo-countdown::after{content:"PROMO HARI INI BERAKHIR 23:59";display:block;margin-top:1px;color:#94a3b8;font-size:.48rem;font-weight:700;letter-spacing:.1px}
+.promo-modal-btns{display:flex;justify-content:center;width:100%;margin-top:-4px}
+.btn-gold{width:100%;max-width:270px;min-height:43px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:0 18px;border-radius:13px;text-decoration:none;color:#fff;font-size:.84rem;font-weight:800;background:linear-gradient(135deg,#2563eb,#3b82f6);box-shadow:0 12px 28px rgba(37,99,235,.25);transition:transform .25s ease,box-shadow .25s ease}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(37,99,235,.32)}
+.btn-gold:active{transform:scale(.98)}
+.promo-modal-content{margin-bottom:3px}
+.promo-modal-actions{margin-top:3px}
+
+@keyframes promoPopup{from{opacity:0;transform:translateY(25px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* DARK MODE */
+
+[data-theme="dark"] .promo-modal-overlay{background:rgba(2,6,23,.78)}
+[data-theme="dark"] .promo-modal{background:#0f1c2e;border-color:rgba(96,165,250,.18);box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.02)}
+[data-theme="dark"] .promo-modal-close{background:#172b45;color:#60a5fa;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+[data-theme="dark"] .promo-modal-close:hover{background:#2563eb;color:#fff}
+[data-theme="dark"] .promo-modal-badge{background:#172b45;color:#60a5fa}
+[data-theme="dark"] .promo-modal-image img{box-shadow:0 16px 35px rgba(0,0,0,.22)}
+[data-theme="dark"] .promo-modal-title{color:#f8fafc}
+[data-theme="dark"] .promo-modal-sub{color:#aab8ca}
+[data-theme="dark"] .promo-countdown{background:linear-gradient(135deg,rgba(37,99,235,.14),rgba(59,130,246,.06));border-color:rgba(59,130,246,.25)}
+[data-theme="dark"] .promo-countdown span{color:#94a3b8}
+[data-theme="dark"] .promo-countdown strong{color:#60a5fa}
+[data-theme="dark"] .promo-countdown::after{color:#64748b}
+[data-theme="dark"] .btn-gold{box-shadow:0 12px 28px rgba(37,99,235,.28)}
+[data-theme="dark"] .btn-gold:hover{box-shadow:0 18px 38px rgba(37,99,235,.38)}
+
+/* TABLET */
+
+@media (min-width:481px) and (max-width:768px){
+.promo-modal{width:min(440px,92vw);padding:17px 19px 13px}
+.promo-modal-image img{width:80%;max-width:290px;max-height:40dvh}
+.promo-modal-title{font-size:1.3rem}
+.promo-modal-sub{font-size:.8rem}
+.promo-countdown{max-width:225px}
+.promo-countdown strong{font-size:1rem}
+.btn-gold{max-width:265px}
 }
 
-.promo-modal-overlay.open{
-    opacity:1;
-    visibility:visible;
-}
-
-
-/* =========================================================
-   BOX POPUP — DEFAULT LIGHT
-========================================================= */
-
-.promo-modal{
-    position:relative;
-    width:min(460px,94vw);
-    max-height:calc(100dvh - 24px);
-    padding:18px 20px 16px;
-    box-sizing:border-box;
-
-    background:#ffffff;
-    border:1px solid rgba(15,23,42,.08);
-    border-radius:24px;
-
-    box-shadow:
-        0 30px 80px rgba(15,23,42,.22),
-        0 0 0 1px rgba(255,255,255,.7);
-
-    overflow:hidden;
-
-    animation:
-        promoPopup .35s
-        cubic-bezier(.22,1,.36,1);
-}
-
-
-/* =========================================================
-   TOMBOL CLOSE
-========================================================= */
-
-.promo-modal-close{
-    position:absolute;
-    top:12px;
-    right:12px;
-
-    width:38px;
-    height:38px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:0;
-    border-radius:50%;
-
-    background:#f1f5f9;
-    color:#2563eb;
-
-    font-size:19px;
-    cursor:pointer;
-
-    z-index:10;
-
-    box-shadow:
-        0 8px 20px rgba(15,23,42,.08);
-
-    transition:
-        background .25s ease,
-        color .25s ease,
-        transform .25s ease;
-}
-
-.promo-modal-close:hover{
-    background:#2563eb;
-    color:#fff;
-    transform:rotate(90deg);
-}
-
-
-/* =========================================================
-   BADGE
-========================================================= */
-
-.promo-modal-badge{
-    width:max-content;
-    margin:0 auto 9px;
-
-    padding:7px 16px;
-
-    border-radius:999px;
-
-    background:#eff6ff;
-    color:#2563eb;
-
-    font-size:.78rem;
-    font-weight:800;
-    letter-spacing:.1px;
-}
-
-
-/* =========================================================
-   GAMBAR PROMO
-========================================================= */
-
-.promo-modal-image{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    margin:3px auto 10px;
-}
-
-.promo-modal-image img{
-    display:block;
-
-    width:70%;
-    max-width:255px;
-    max-height:35dvh;
-
-    height:auto;
-
-    object-fit:contain;
-
-    border-radius:14px;
-
-    box-shadow:
-        0 16px 35px rgba(15,23,42,.16);
-
-    transition:
-        transform .3s ease;
-}
-
-.promo-modal-image img:hover{
-    transform:
-        translateY(-3px)
-        scale(1.01);
-}
-
-
-/* =========================================================
-   JUDUL
-========================================================= */
-
-.promo-modal-title{
-    margin:0 0 5px;
-
-    text-align:center;
-
-    color:#0f172a;
-
-    font-size:1.35rem;
-    font-weight:900;
-    line-height:1.25;
-}
-
-
-/* =========================================================
-   DESKRIPSI
-========================================================= */
-
-.promo-modal-sub{
-    max-width:360px;
-
-    margin:0 auto 9px;
-
-    text-align:center;
-
-    color:#64748b;
-
-    font-size:.82rem;
-    line-height:1.45;
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-.promo-countdown{
-    width:100%;
-    max-width:300px;
-
-    margin:0 auto 8px;
-
-    padding:8px 14px 9px;
-
-    box-sizing:border-box;
-
-    text-align:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(37,99,235,.08),
-            rgba(59,130,246,.035)
-        );
-
-    border:
-        1px solid
-        rgba(59,130,246,.18);
-
-    border-radius:15px;
-}
-
-
-/* LABEL COUNTDOWN */
-
-.promo-countdown span{
-    display:block;
-
-    margin-bottom:2px;
-
-    color:#64748b;
-
-    font-size:.68rem;
-    font-weight:700;
-    letter-spacing:.3px;
-}
-
-
-/* ANGKA COUNTDOWN */
-
-.promo-countdown strong{
-    display:block;
-
-    color:#2563eb;
-
-    font-size:1.42rem;
-    font-weight:900;
-
-    letter-spacing:3px;
-    line-height:1.15;
-
-    font-variant-numeric:tabular-nums;
-}
-
-
-/* KETERANGAN HABIS PROMO */
-
-.promo-countdown::after{
-    content:"PROMO HARI INI BERAKHIR 23:59";
-
-    display:block;
-
-    margin-top:2px;
-
-    color:#94a3b8;
-
-    font-size:.57rem;
-    font-weight:700;
-    letter-spacing:.2px;
-}
-
-
-/* =========================================================
-   TOMBOL PROMO
-========================================================= */
-
-.promo-modal-btns{
-    display:flex;
-    justify-content:center;
-
-    width:100%;
-    margin-top:0;
-}
-
-.btn-gold{
-    width:100%;
-    max-width:300px;
-
-    min-height:46px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    box-sizing:border-box;
-
-    padding:0 18px;
-
-    border-radius:13px;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    font-size:.86rem;
-    font-weight:800;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #3b82f6
-        );
-
-    box-shadow:
-        0 12px 28px
-        rgba(37,99,235,.25);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-}
-
-.btn-gold:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 18px 38px
-        rgba(37,99,235,.32);
-}
-
-.btn-gold:active{
-    transform:scale(.98);
-}
-
-
-/* =========================================================
-   JARAK CONTENT
-========================================================= */
-
-.promo-modal-content{
-    margin-bottom:5px;
-}
-
-.promo-modal-actions{
-    margin-top:5px;
-}
-
-
-/* =========================================================
-   ANIMASI POPUP
-========================================================= */
-
-@keyframes promoPopup{
-    from{
-        opacity:0;
-        transform:
-            translateY(25px)
-            scale(.94);
-    }
-
-    to{
-        opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   DARK MODE
-========================================================= */
-
-[data-theme="dark"] .promo-modal-overlay{
-    background:rgba(2,6,23,.78);
-}
-
-[data-theme="dark"] .promo-modal{
-    background:#0f1c2e;
-
-    border-color:
-        rgba(96,165,250,.18);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.4),
-        0 0 0 1px rgba(255,255,255,.02);
-}
-
-[data-theme="dark"] .promo-modal-close{
-    background:#172b45;
-    color:#60a5fa;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.18);
-}
-
-[data-theme="dark"] .promo-modal-close:hover{
-    background:#2563eb;
-    color:#fff;
-}
-
-[data-theme="dark"] .promo-modal-badge{
-    background:#172b45;
-    color:#60a5fa;
-}
-
-[data-theme="dark"] .promo-modal-image img{
-    box-shadow:
-        0 16px 35px rgba(0,0,0,.22);
-}
-
-[data-theme="dark"] .promo-modal-title{
-    color:#f8fafc;
-}
-
-[data-theme="dark"] .promo-modal-sub{
-    color:#aab8ca;
-}
-
-[data-theme="dark"] .promo-countdown{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(37,99,235,.14),
-            rgba(59,130,246,.06)
-        );
-
-    border-color:
-        rgba(59,130,246,.25);
-}
-
-[data-theme="dark"] .promo-countdown span{
-    color:#94a3b8;
-}
-
-[data-theme="dark"] .promo-countdown strong{
-    color:#60a5fa;
-}
-
-[data-theme="dark"] .promo-countdown::after{
-    color:#64748b;
-}
-
-[data-theme="dark"] .btn-gold{
-    box-shadow:
-        0 12px 28px
-        rgba(37,99,235,.28);
-}
-
-[data-theme="dark"] .btn-gold:hover{
-    box-shadow:
-        0 18px 38px
-        rgba(37,99,235,.38);
-}
-
-
-/* =========================================================
-   HP
-========================================================= */
+/* HP */
 
 @media(max-width:480px){
-
-    .promo-modal-overlay{
-        padding:8px;
-    }
-
-    .promo-modal{
-        width:94vw;
-
-        max-height:calc(100dvh - 16px);
-
-        padding:
-            14px
-            16px
-            14px;
-
-        border-radius:21px;
-    }
-
-    .promo-modal-close{
-        top:8px;
-        right:8px;
-
-        width:33px;
-        height:33px;
-
-        font-size:16px;
-    }
-
-    .promo-modal-badge{
-        margin-bottom:6px;
-
-        padding:
-            6px
-            14px;
-
-        font-size:.73rem;
-    }
-
-    .promo-modal-image{
-        margin:
-            2px
-            auto
-            7px;
-    }
-
-    .promo-modal-image img{
-        width:67%;
-
-        max-width:225px;
-        max-height:34dvh;
-
-        border-radius:12px;
-    }
-
-    .promo-modal-title{
-        margin-bottom:4px;
-        font-size:1.12rem;
-    }
-
-    .promo-modal-sub{
-        max-width:330px;
-
-        margin-bottom:7px;
-
-        font-size:.76rem;
-        line-height:1.4;
-    }
-
-    .promo-countdown{
-        max-width:270px;
-
-        margin-bottom:6px;
-
-        padding:
-            7px
-            12px
-            8px;
-
-        border-radius:14px;
-    }
-
-    .promo-countdown span{
-        font-size:.64rem;
-    }
-
-    .promo-countdown strong{
-        font-size:1.28rem;
-        letter-spacing:2.5px;
-    }
-
-    .promo-countdown::after{
-        margin-top:2px;
-        font-size:.53rem;
-    }
-
-    .promo-modal-btns{
-        margin-top:0;
-    }
-
-    .btn-gold{
-        max-width:280px;
-
-        min-height:44px;
-
-        padding:
-            0
-            14px;
-
-        border-radius:12px;
-
-        font-size:.8rem;
-    }
+.promo-modal-overlay{padding:8px}
+.promo-modal{width:94vw;max-height:calc(100dvh - 16px);padding:13px 16px 12px;border-radius:21px}
+.promo-modal-close{top:8px;right:8px;width:33px;height:33px;font-size:16px}
+.promo-modal-badge{margin-bottom:5px;padding:6px 14px;font-size:.73rem}
+.promo-modal-image{margin:1px auto 6px}
+.promo-modal-image img{width:76%;max-width:250px;max-height:36dvh;border-radius:12px}
+.promo-modal-title{margin-bottom:3px;font-size:1.12rem}
+.promo-modal-sub{max-width:330px;margin-bottom:5px;font-size:.76rem;line-height:1.35}
+.promo-countdown{max-width:220px;margin-bottom:3px;padding:5px 9px 6px;border-radius:12px}
+.promo-countdown span{font-size:.57rem}
+.promo-countdown strong{font-size:1rem;letter-spacing:1.5px}
+.promo-countdown::after{margin-top:1px;font-size:.47rem}
+.promo-modal-btns{margin-top:-4px}
+.btn-gold{max-width:265px;min-height:42px;padding:0 14px;border-radius:12px;font-size:.79rem}
 }
 
-
-/* =========================================================
-   HP SANGAT PENDEK
-========================================================= */
+/* HP SANGAT PENDEK */
 
 @media(max-width:480px) and (max-height:700px){
-
-    .promo-modal{
-        padding-top:11px;
-        padding-bottom:11px;
-    }
-
-    .promo-modal-badge{
-        margin-bottom:4px;
-    }
-
-    .promo-modal-image{
-        margin-bottom:5px;
-    }
-
-    .promo-modal-image img{
-        max-height:29dvh;
-        max-width:195px;
-    }
-
-    .promo-modal-title{
-        font-size:1rem;
-    }
-
-    .promo-modal-sub{
-        margin-bottom:5px;
-        font-size:.7rem;
-    }
-
-    .promo-countdown{
-        margin-bottom:5px;
-
-        padding:
-            6px
-            10px
-            7px;
-    }
-
-    .promo-countdown strong{
-        font-size:1.15rem;
-    }
-
-    .btn-gold{
-        min-height:42px;
-    }
+.promo-modal{padding-top:10px;padding-bottom:9px}
+.promo-modal-badge{margin-bottom:3px;padding:5px 12px;font-size:.69rem}
+.promo-modal-image{margin-bottom:4px}
+.promo-modal-image img{width:72%;max-width:205px;max-height:29dvh}
+.promo-modal-title{margin-bottom:2px;font-size:1rem}
+.promo-modal-sub{margin-bottom:4px;font-size:.69rem}
+.promo-countdown{max-width:210px;margin-bottom:2px;padding:4px 8px 5px;border-radius:11px}
+.promo-countdown span{font-size:.55rem}
+.promo-countdown strong{font-size:.96rem;letter-spacing:1.4px}
+.promo-countdown::after{font-size:.45rem}
+.promo-modal-btns{margin-top:-5px}
+.btn-gold{max-width:250px;min-height:40px;font-size:.75rem}
 }
 
+/* HP SANGAT KECIL — 360PX */
+
+@media(max-width:360px){
+.promo-modal{width:95vw;padding:9px 12px;border-radius:18px}
+.promo-modal-close{width:30px;height:30px;top:7px;right:7px;font-size:14px}
+.promo-modal-badge{padding:5px 11px;font-size:.65rem}
+.promo-modal-image img{width:70%;max-width:185px;max-height:27dvh}
+.promo-modal-title{font-size:.94rem}
+.promo-modal-sub{font-size:.65rem;max-width:290px}
+.promo-countdown{max-width:200px;padding:4px 8px 5px}
+.promo-countdown span{font-size:.53rem}
+.promo-countdown strong{font-size:.92rem;letter-spacing:1.2px}
+.promo-countdown::after{font-size:.43rem}
+.promo-modal-btns{margin-top:-5px}
+.btn-gold{max-width:235px;min-height:39px;font-size:.71rem;border-radius:10px}
+}
+
+/* REDUCE MOTION */
+
+@media(prefers-reduced-motion:reduce){
+.promo-modal-overlay{transition:none}
+.promo-modal{animation:none}
+.promo-modal-close,.promo-modal-image img,.btn-gold{transition:none}
+}
 
 /* ── FLOATING WHATSAPP ───────────────────────── */
 .wa-float{position:fixed;right:20px;bottom:20px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#25d366;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:200;transition:.2s;animation:waPulse 2.4s ease-in-out infinite}
