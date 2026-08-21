@@ -289,6 +289,204 @@ function closePromoModal() {
     document.body.style.overflow = "";
 }
 
+
+
+/* =========================================================
+   PROMO COUNTDOWN
+   BERAKHIR SETIAP HARI PUKUL 23:59:00
+========================================================= */
+
+let promoCountdownInterval = null;
+
+
+function startPromoCountdown(){
+
+    const countdown =
+        document.getElementById(
+            "promoCountdown"
+        );
+
+    if(!countdown) return;
+
+
+    function updateCountdown(){
+
+        const now = new Date();
+
+        const end = new Date();
+
+        end.setHours(
+            23,
+            59,
+            0,
+            0
+        );
+
+
+        let remaining =
+            end.getTime() -
+            now.getTime();
+
+
+        /* SUDAH LEWAT 23:59 */
+
+        if(remaining <= 0){
+
+            countdown.textContent =
+                "00:00:00";
+
+            return;
+
+        }
+
+
+        const hours =
+            Math.floor(
+                remaining /
+                (1000 * 60 * 60)
+            );
+
+
+        const minutes =
+            Math.floor(
+                (
+                    remaining %
+                    (1000 * 60 * 60)
+                ) /
+                (1000 * 60)
+            );
+
+
+        const seconds =
+            Math.floor(
+                (
+                    remaining %
+                    (1000 * 60)
+                ) /
+                1000
+            );
+
+
+        countdown.textContent =
+
+            String(hours)
+                .padStart(2,"0")
+
+            + ":" +
+
+            String(minutes)
+                .padStart(2,"0")
+
+            + ":" +
+
+            String(seconds)
+                .padStart(2,"0");
+
+    }
+
+
+    updateCountdown();
+
+
+    if(promoCountdownInterval){
+
+        clearInterval(
+            promoCountdownInterval
+        );
+
+    }
+
+
+    promoCountdownInterval =
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+}
+
+
+/* =========================================================
+   BUKA PROMO
+========================================================= */
+
+function openPromoModal(){
+
+    const modal =
+        document.getElementById(
+            "promoModalOverlay"
+        );
+
+    if(!modal) return;
+
+
+    modal.classList.add("open");
+
+
+    /* KUNCI SCROLL HALAMAN */
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    /* MULAI COUNTDOWN */
+
+    startPromoCountdown();
+
+}
+
+
+/* =========================================================
+   TUTUP PROMO
+========================================================= */
+
+function closePromoModal(){
+
+    const modal =
+        document.getElementById(
+            "promoModalOverlay"
+        );
+
+    if(!modal) return;
+
+
+    modal.classList.remove("open");
+
+
+    /* BUKA KEMBALI SCROLL */
+
+    document.body.style.overflow =
+        "";
+
+
+    if(promoCountdownInterval){
+
+        clearInterval(
+            promoCountdownInterval
+        );
+
+        promoCountdownInterval =
+            null;
+
+    }
+
+}
+
+
+/* =========================================================
+   START COUNTDOWN SAAT HALAMAN SIAP
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        startPromoCountdown();
+
+    }
+);
+
+
 // ── DAFTAR HARGA ──────────────────────────────────
 function goCheckout(name,price){
     localStorage.setItem("cartItems",JSON.stringify([{
@@ -316,6 +514,7 @@ function selectPackage(packageName, packagePrice){
         "&price=" +
         encodeURIComponent(packagePrice);
 }
+
 
 
 

@@ -75,6 +75,7 @@
     if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
   })();
 </script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
@@ -1390,20 +1391,87 @@
 </footer>
  
 <!-- POPUP PROMO BULANAN -->
-<div class="promo-modal-overlay" id="promoModalOverlay" onclick="if(event.target===this) closePromoModal()">
-  <div class="promo-modal">
-    <button class="promo-modal-close" onclick="closePromoModal()" aria-label="Tutup promo">✕</button>
-    <div class="promo-modal-badge">🎉 Promo Bulan Ini</div>
-    <div class="promo-modal-image">
-    <img src="img/promo/promo_agustus.jpeg" alt="Promo Bulan Ini">
+
+<div
+    class="promo-modal-overlay"
+    id="promoModalOverlay"
+    onclick="if(event.target===this) closePromoModal()">
+
+    <div class="promo-modal">
+
+        <!-- TOMBOL CLOSE -->
+        <button
+            class="promo-modal-close"
+            onclick="closePromoModal()"
+            aria-label="Tutup promo"
+        >
+            ✕
+        </button>
+
+
+        <!-- BADGE -->
+        <div class="promo-modal-badge">
+            🎉 Promo Bulan Ini
+        </div>
+
+
+        <!-- GAMBAR PROMO -->
+        <div class="promo-modal-image">
+
+            <img
+                src="img/promo/promo_agustus.jpeg"
+                alt="Promo Bulan Ini"
+            >
+
+        </div>
+
+
+        <!-- JUDUL -->
+        <h3 class="promo-modal-title">
+            Diskon Spesial Buat Kamu!
+        </h3>
+
+
+        <!-- DESKRIPSI -->
+        <p class="promo-modal-sub">
+            🎉 Spesial bulan Agustus! Nikmati diskon menarik
+            untuk semua paket desain CV profesional.
+            Kesempatan terbatas, jangan sampai ketinggalan!
+        </p>
+
+
+        <!-- COUNTDOWN -->
+        <div class="promo-countdown">
+
+            <span>
+                ⏰ Promo berakhir dalam
+            </span>
+
+            <strong id="promoCountdown">
+                23:59:00
+            </strong>
+
+        </div>
+
+
+        <!-- TOMBOL -->
+        <div class="promo-modal-btns">
+
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSe6gvUtFzpON0sI2cMTWkzV0D3gM-3peouedE-P4OxwDIAAFA/viewform"
+                target="_blank"
+                rel="noopener"
+                class="btn-gold"
+            >
+                📝 Klaim Promo Sekarang
+            </a>
+
+        </div>
+
     </div>
-    <h3 class="promo-modal-title">Diskon Spesial Buat Kamu!</h3>
-    <p class="promo-modal-sub">🎉 Spesial bulan Agustus! Nikmati diskon menarik untuk semua paket desain CV profesional. Kesempatan terbatas, jangan sampai ketinggalan!</p>
-    <div class="promo-modal-btns">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6gvUtFzpON0sI2cMTWkzV0D3gM-3peouedE-P4OxwDIAAFA/viewform" target="_blank" class="btn-gold">📝 Klaim Promo Sekarang</a>
-    </div>
-  </div>
+
 </div>
+
 
 <!-- CART POPUP -->
 <div class="cart-overlay" id="cartOverlay">
