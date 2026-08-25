@@ -93,28 +93,40 @@
 
 <!-- AUTO OPEN PACKAGE -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const paket = urlParams.get("paket")?.toLowerCase();
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (!paket) {
-        return;
-    }
+    const params = new URLSearchParams(window.location.search);
+    const paket = (params.get("paket") || "").trim().toLowerCase();
+
+    if (!paket) return;
 
     const targetTab = document.querySelector(
         `.template-tab[data-filter="${paket}"]`
     );
 
-    if (!targetTab) {
-        return;
-    }
+    if (!targetTab) return;
 
-    setTimeout(function() {
+    requestAnimationFrame(function () {
         targetTab.click();
-    }, 100);
+
+        setTimeout(function () {
+
+            const templateContainer =
+                document.querySelector(".templates-container");
+
+            if (templateContainer) {
+                templateContainer.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+
+        }, 150);
+    });
 
 });
+
 </script>
 
 </body>

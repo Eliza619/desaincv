@@ -485,20 +485,32 @@ document.addEventListener(
 
     }
 );
-
-
 // ── DAFTAR HARGA ──────────────────────────────────
-function goCheckout(name,price){
-    localStorage.setItem("cartItems",JSON.stringify([{
-        name:name,
-        price:price
+function goCheckout(name, price) {
+    localStorage.setItem("cartItems", JSON.stringify([{
+        name: name,
+        price: price
     }]));
 
-    window.location.href="checkout.html";
+    window.location.href = "checkout.html";
 }
 
 
-function selectPackage(packageName, packagePrice){
+function selectPackage(packageName, packagePrice) {
+
+    let paket = "";
+
+    const name = packageName.toLowerCase();
+
+    if (name.includes("regular")) {
+        paket = "regular";
+    } 
+    else if (name.includes("premium")) {
+        paket = "premium";
+    } 
+    else if (name.includes("platinum")) {
+        paket = "platinum";
+    }
 
     localStorage.setItem(
         "selectedPackage",
@@ -509,13 +521,6 @@ function selectPackage(packageName, packagePrice){
     );
 
     window.location.href =
-        "template.html?package=" +
-        encodeURIComponent(packageName) +
-        "&price=" +
-        encodeURIComponent(packagePrice);
+        "template.html?paket=" +
+        encodeURIComponent(paket);
 }
-
-
-
-
-
