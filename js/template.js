@@ -1,12 +1,4 @@
 /* =========================================================
-   DESAINCV.TOP
-   TEMPLATE.JS
-   FILTER PAKET + TEMPLATE + CHECKOUT
-   ANTI DUPLICATE VERSION
-========================================================= */
-
-
-/* =========================================================
    ANTI SCRIPT DUPLICATE
    Kalau template.js tidak sengaja dipanggil 2x,
    render hanya akan dijalankan sekali.
