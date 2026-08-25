@@ -424,200 +424,45 @@ nav{
 
 /* ── HERO HP SAJA ───────────────────────────────── */
 @media(max-width:480px){
-.hero{
-display:flex;
-flex-direction:column;
-min-height:auto;
-padding:72px 14px 28px;
-}
-.hero-inner{
-display:contents;
-}
-.hero-text{
-display:contents;
-}
-.hero-eyebrow{
-order:1;
-align-self:center;
-padding:7px 13px;
-font-size:.65rem;
-}
-.hero h1{
-order:2;
-font-size:clamp(2rem,9vw,2.55rem);
-line-height:1.06;
-letter-spacing:-1px;
-text-align:center;
-}
-.hero p{
-order:3;
-max-width:340px;
-margin-left:auto;
-margin-right:auto;
-font-size:.78rem;
-line-height:1.65;
-text-align:center;
-}
-.hero-cv-marquee{
-order:4;
-position:relative;
-top:auto;
-right:auto;
-transform:none;
-width:100%;
-height:205px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
-margin:3px auto 16px;
-opacity:.9;
-z-index:1;
-}
-.hero-cv-marquee .cv-col{
-gap:8px;
-}
-.hero-cv-marquee .mini-tpl-card{
-padding:3px;
-border-radius:10px;
-box-shadow:0 8px 20px rgba(0,0,0,.14);
-}
-.hero-cv-marquee .mini-tpl-card img{
-border-radius:7px;
-}
-.hero-cv-marquee::before{
-filter:blur(28px);
-}
-.hero-cta{
-order:5;
-display:flex!important;
-flex-direction:row!important;
-align-items:center;
-justify-content:center;
-width:100%;
-max-width:340px;
-gap:7px;
-margin:0 auto;
-flex-wrap:nowrap!important;
-}
-.hero-cta .btn-primary,
-.hero-cta .btn-secondary{
-display:flex!important;
-align-items:center;
-justify-content:center;
-width:50%!important;
-min-width:0;
-flex:1 1 0;
-height:48px;
-padding:0 5px;
-font-size:.74rem;
-border-radius:12px;
-white-space:nowrap;
-box-sizing:border-box;
-}
-.hero-stats{
-order:6;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-width:100%;
-max-width:340px;
-gap:5px;
-margin:20px auto 0;
-}
-.hero-stat{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:4px;
-padding:9px 3px;
-text-align:center;
-}
-.hero-stat-icon{
-width:34px;
-height:34px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:16px;
-border-radius:10px;
-}
-.hero-stat h3{
-margin:0;
-font-size:.9rem;
-line-height:1;
-}
-.hero-stat span{
-font-size:.53rem;
-white-space:nowrap;
-}
+.hero{display:flex;flex-direction:column;min-height:auto;padding:72px 14px 28px}
+.hero::before,.hero::after{pointer-events:none!important}
+.hero-inner{display:contents}
+.hero-text{display:contents}
+.hero-eyebrow{order:1;align-self:center;padding:7px 13px;font-size:.65rem}
+.hero h1{order:2;font-size:clamp(2rem,9vw,2.55rem);line-height:1.06;letter-spacing:-1px;text-align:center}
+.hero p{order:3;max-width:340px;margin-left:auto;margin-right:auto;font-size:.78rem;line-height:1.65;text-align:center}
+.hero-cv-marquee{order:4;position:relative;top:auto;right:auto;transform:none;width:100%;height:205px;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:3px auto 16px;opacity:.9;z-index:1;pointer-events:none!important}
+.hero-cv-marquee::before,.hero-cv-marquee *{pointer-events:none!important}
+.hero-cv-marquee .cv-col{gap:8px}
+.hero-cv-marquee .mini-tpl-card{padding:3px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.14)}
+.hero-cv-marquee .mini-tpl-card img{border-radius:7px}
+.hero-cv-marquee::before{filter:blur(28px)}
+.hero-cta{order:5;display:flex!important;flex-direction:row!important;align-items:center;justify-content:center;width:100%;max-width:340px;gap:7px;margin:0 auto;flex-wrap:nowrap!important;position:relative;z-index:9999!important;pointer-events:auto!important}
+.hero-cta .btn-primary,.hero-cta .btn-secondary{display:flex!important;align-items:center;justify-content:center;width:50%!important;min-width:0;flex:1 1 0;height:48px;padding:0 5px;font-size:.74rem;border-radius:12px;white-space:nowrap;box-sizing:border-box;position:relative;z-index:10000!important;pointer-events:auto!important;touch-action:manipulation}
+.hero-stats{order:6;display:grid;grid-template-columns:repeat(3,1fr);width:100%;max-width:340px;gap:5px;margin:20px auto 0}
+.hero-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:9px 3px;text-align:center}
+.hero-stat-icon{width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;border-radius:10px}
+.hero-stat h3{margin:0;font-size:.9rem;line-height:1}
+.hero-stat span{font-size:.53rem;white-space:nowrap}
 }
 
 /* ── HP KECIL ───────────────────────────────────── */
 @media(max-width:360px){
-.hero{
-padding:68px 11px 25px;
-}
-.hero-eyebrow{
-font-size:.6rem;
-padding:6px 11px;
-}
-.hero h1{
-font-size:1.85rem;
-line-height:1.05;
-}
-.hero p{
-max-width:300px;
-font-size:.72rem;
-line-height:1.6;
-}
-.hero-cv-marquee{
-height:185px;
-gap:6px;
-margin-bottom:14px;
-}
-.hero-cv-marquee .cv-col{
-gap:7px;
-}
-.hero-cv-marquee .mini-tpl-card{
-padding:3px;
-border-radius:9px;
-}
-.hero-cv-marquee .mini-tpl-card img{
-border-radius:7px;
-}
-.hero-cta{
-max-width:300px;
-gap:5px;
-}
-.hero-cta .btn-primary,
-.hero-cta .btn-secondary{
-height:44px;
-padding:0 3px;
-font-size:.68rem;
-border-radius:11px;
-}
-.hero-stats{
-max-width:300px;
-gap:3px;
-margin-top:18px;
-}
-.hero-stat{
-padding:8px 2px;
-gap:3px;
-}
-.hero-stat-icon{
-width:30px;
-height:30px;
-font-size:14px;
-border-radius:9px;
-}
-.hero-stat h3{
-font-size:.82rem;
-}
-.hero-stat span{
-font-size:.48rem;
-white-space:nowrap;
-}
+.hero{padding:68px 11px 25px}
+.hero-eyebrow{font-size:.6rem;padding:6px 11px}
+.hero h1{font-size:1.85rem;line-height:1.05}
+.hero p{max-width:300px;font-size:.72rem;line-height:1.6}
+.hero-cv-marquee{height:185px;gap:6px;margin-bottom:14px}
+.hero-cv-marquee .cv-col{gap:7px}
+.hero-cv-marquee .mini-tpl-card{padding:3px;border-radius:9px}
+.hero-cv-marquee .mini-tpl-card img{border-radius:7px}
+.hero-cta{max-width:300px;gap:5px}
+.hero-cta .btn-primary,.hero-cta .btn-secondary{height:44px;padding:0 3px;font-size:.68rem;border-radius:11px}
+.hero-stats{max-width:300px;gap:3px;margin-top:18px}
+.hero-stat{padding:8px 2px;gap:3px}
+.hero-stat-icon{width:30px;height:30px;font-size:14px;border-radius:9px}
+.hero-stat h3{font-size:.82rem}
+.hero-stat span{font-size:.48rem;white-space:nowrap}
 }
 /* ── RESPONSIVE ──────────────────────────────── */
 @media(max-width:1200px){.hero{padding:90px 35px 40px;}.hero-inner{gap:45px;}.hero h1{font-size:3.2rem;}.hero-cv-marquee{width:280px;height:78%;}}
