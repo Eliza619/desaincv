@@ -610,7 +610,8 @@ header,.navbar,.template-navbar{position:relative;z-index:99999!important;}
 .ba-img-wrap{flex:1;max-width:280px;position:relative;}
 .ba-img-wrap img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--border);background:var(--card);transition:.3s;}
 .ba-card:hover img{transform:scale(1.03);}
-.ba-arrow{width:52px;height:52px;flex:none;border-radius:50%;background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700;box-shadow:0 10px 25px rgba(37,99,235,.25);}
+.ba-arrow{width:38px;height:38px;flex:none;border-radius:50%;background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(37,99,235,.25);}
+.ba-arrow svg{width:22px;height:22px;}
 .ba-tag{position:absolute;top:12px;left:12px;padding:8px 16px;border-radius:999px;color:#fff;font-size:.78rem;font-weight:700;z-index:2;}
 .ba-tag-before{background:#94a3b8;}
 .ba-tag-after{background:#2563eb;}
