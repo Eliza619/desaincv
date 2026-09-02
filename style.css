@@ -1,106 +1,46 @@
 /* ── TOKEN SYSTEM ─────────────────────────────────────── */
 
-:root{
-    --ink:#0a1628;
-    --ink-soft:#2d3d5a;
-    --surface:#f5f8ff;
-    --card:#fff;
-    --gold:#1a6fd4;
-    --gold-light:#ddeeff;
-    --gold-dark:#0e4fa0;
-    --teal:#0077b6;
-    --teal-light:#cce8f4;
-    --muted:#6b7fa3;
-    --border:#d4e2f4;
-    --accent:#3b9eff;
-    --accent2:#5bc4fa;
-    --deep-navy:#0a1628;
-    --nav-bg:rgba(245,248,255,.92);
-    --nav-bg-open:rgba(245,248,255,.98);
-    --section-padding:90px 0;
-    --section-max:1200px;
-    --section-side:28px;
-    --section-title:clamp(42px,4.2vw,58px);
-    --section-sub:clamp(19px,1.7vw,27px);
-    --section-title-gap:30px;
-    --radius-sm:8px;
-    --radius-md:16px;
-    --radius-lg:28px;
-    --shadow-sm:0 2px 8px rgba(10,22,40,.06);
-    --shadow-md:0 8px 32px rgba(10,22,40,.12);
-    --shadow-lg:0 24px 64px rgba(10,22,40,.16);
-}
+:root{--ink:#0a1628;--ink-soft:#2d3d5a;--surface:#f5f8ff;--card:#fff;--gold:#1a6fd4;
+    --gold-light:#ddeeff;--gold-dark:#0e4fa0;--teal:#0077b6;--teal-light:#cce8f4;
+    --muted:#6b7fa3;--border:#d4e2f4;--accent:#3b9eff;--accent2:#5bc4fa;--deep-navy:#0a1628;
+    --nav-bg:rgba(245,248,255,.92);--nav-bg-open:rgba(245,248,255,.98);--section-padding:90px 0;
+    --section-max:1200px;--section-side:28px;--section-title:clamp(42px,4.2vw,58px);
+    --section-sub:clamp(19px,1.7vw,27px);--section-title-gap:30px;--radius-sm:8px;--radius-md:16px;
+    --radius-lg:28px;--shadow-sm:0 2px 8px rgba(10,22,40,.06);--shadow-md:0 8px 32px rgba(10,22,40,.12);
+    --shadow-lg:0 24px 64px rgba(10,22,40,.16)}
 
 /* ── DRAK ─────────────────────────────────────── */
-
-[data-theme="dark"]{
-    --ink:#f8fafc;
-    --ink-soft:#cbd5e1;
-    --surface:#07101f;
-    --card:#0d192b;
-    --gold:#60a5fa;
-    --gold-light:rgba(96,165,250,.14);
-    --gold-dark:#3b82f6;
-    --teal:#38d9c5;
-    --teal-light:rgba(56,217,197,.12);
-    --muted:#94a3b8;
-    --border:rgba(148,163,184,.16);
-    --accent:#3b82f6;
-    --accent2:#60a5fa;
-    --deep-navy:#020617;
-    --nav-bg:rgba(7,16,31,.94);
-    --nav-bg-open:rgba(7,16,31,.98);
-    --shadow-sm:0 4px 18px rgba(0,0,0,.20);
-    --shadow-md:0 12px 35px rgba(0,0,0,.28);
-    --shadow-lg:0 24px 65px rgba(0,0,0,.38);
-}
+[data-theme=dark]{--ink:#f8fafc;--ink-soft:#cbd5e1;--surface:#07101f;--card:#0d192b;
+    --gold:#60a5fa;--gold-light:rgba(96,165,250,.14);--gold-dark:#3b82f6;--teal:#38d9c5;
+    --teal-light:rgba(56,217,197,.12);--muted:#94a3b8;--border:rgba(148,163,184,.16);
+    --accent:#3b82f6;--accent2:#60a5fa;--deep-navy:#020617;--nav-bg:rgba(7,16,31,.94);
+    --nav-bg-open:rgba(7,16,31,.98);--shadow-sm:0 4px 18px rgba(0,0,0,.20);
+    --shadow-md:0 12px 35px rgba(0,0,0,.28);--shadow-lg:0 24px 65px rgba(0,0,0,.38)}
 
 /* ── GLOBAL ─────────────────────────────────────── */
-
-*,
-*::before,
-*::after{box-sizing:border-box; margin:0; padding:0;}
-html{scroll-behavior:smooth; overflow-y:scroll;}
-body{ font-family:'Plus Jakarta Sans',sans-serif; background:var(--surface); color:var(--ink);line-height:1.6; overflow-x:hidden;}
-a{ text-decoration:none; color:inherit;}
-img{ max-width:100%; display:block;}
-h1,h2,h3,.section-title,.price-amount,.cta-section h2{font-family:'Poppins',sans-serif;font-weight:700;}
+*,::after,::before{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;
+    overflow-y:scroll}body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--surface);
+    color:var(--ink);line-height:1.6;overflow-x:hidden}a{text-decoration:none;
+    color:inherit}img{max-width:100%;display:block}.cta-section h2,.price-amount,.section-title,h1,h2,h3{font-family:Poppins,sans-serif;font-weight:700}
 
 /* ── SECTION GLOBAL ─────────────────────────────────────── */
-
-section{ padding:var(--section-padding); background:var(--surface); color:var(--ink); }
-.section-inner{ width:100%; max-width:var(--section-max); margin:auto; padding:0 var(--section-side);}
-.section-title{ margin:0; max-width:800px; font-size:var(--section-title); line-height:1.05;letter-spacing:-.045em;}
-.section-subtitle,
-.section-sub{ margin:var(--section-title-gap) 0 0; max-width:1000px; font-size:var(--section-sub);line-height:1.7; color:var(--muted);}
-.section-label{ display:inline-flex; align-items:center; gap:8px; padding:10px 18px; margin-bottom:42px;border-radius:999px; background:var(--card); color:var(--gold); border:1px solid var(--border);
-    box-shadow:var(--shadow-sm); font-size:.82rem; font-weight:700;}
+section{padding:var(--section-padding);background:var(--surface);color:var(--ink)}
+.section-inner{width:100%;max-width:var(--section-max);margin:auto;padding:0 var(--section-side)}
+.section-title{margin:0;max-width:800px;font-size:var(--section-title);line-height:1.05;letter-spacing:-.045em}
+.section-sub,.section-subtitle{margin:var(--section-title-gap) 0 0;max-width:1000px;font-size:var(--section-sub);line-height:1.7;color:var(--muted)}
+.section-label{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;margin-bottom:42px;border-radius:999px;background:var(--card);color:var(--gold);border:1px solid var(--border);box-shadow:var(--shadow-sm);font-size:.82rem;font-weight:700}
 
 /* ── DRAK GLOBAL TIDAK ADA PUTIH ─────────────────────────────────────── */
-
-[data-theme="dark"] body{
-    background:
-        radial-gradient(circle at 10% 10%,rgba(37,99,235,.10),transparent 28%),
-        radial-gradient(circle at 90% 30%,rgba(91,196,250,.06),transparent 25%),
-        linear-gradient(135deg,#020617,#07152b 50%,#030712);
-}
-
-[data-theme="dark"] section{
-    background:
-        radial-gradient(circle at 15% 10%,rgba(37,99,235,.10),transparent 30%),
-        radial-gradient(circle at 85% 25%,rgba(91,196,250,.06),transparent 28%),
-        linear-gradient(135deg,#07101f,#020617);
-    color:var(--ink);
-}
-
-[data-theme="dark"] .section-title,
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4{color:#f8fafc;}
-[data-theme="dark"] .section-sub,
-[data-theme="dark"] .section-subtitle{color:#aebbd0;}
-[data-theme="dark"] .section-label{background:#0b1628; color:#60a5fa; border-color:rgba(96,165,250,.20);}
+[data-theme=dark] body{background:radial-gradient(circle at 10% 10%,rgba(37,99,235,.1),transparent 28%),radial-gradient(circle at 90% 30%,rgba(91,196,250,.06),transparent 25%),linear-gradient(135deg,#020617,#07152b 50%,#030712)}
+[data-theme=dark] section{background:radial-gradient(circle at 15% 10%,rgba(37,99,235,.1),transparent 30%),radial-gradient(circle at 85% 25%,rgba(91,196,250,.06),transparent 28%),linear-gradient(135deg,#07101f,#020617);color:var(--ink)}
+[data-theme=dark] .section-title,
+[data-theme=dark] h1,
+[data-theme=dark] h2,
+[data-theme=dark] h3,
+[data-theme=dark] h4{color:#f8fafc}
+[data-theme=dark] .section-sub,
+[data-theme=dark] .section-subtitle{color:#aebbd0}
+[data-theme=dark] .section-label{background:#0b1628;color:#60a5fa;border-color:rgba(96,165,250,.2)}
 
 /* ── SEMA CARD ─────────────────────────────────────── */
 
