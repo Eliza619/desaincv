@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             label: "Paket Premium",
             folder: "premium",
             prefix: "premium-",
-            total: 9
+            total: 10
         },
         {
             key: "ats",
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             label: "Paket Platinum",
             folder: "platinum",
             prefix: "platinum-",
-            total: 40
+            total: 50
         }
     ];
 
