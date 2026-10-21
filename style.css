@@ -264,10 +264,43 @@ nav{
 .badge-fast{bottom:20px;left:-28px;color:var(--gold-dark);}
 
 /* ── KENAPA KAMI ───────────────────────────────── */
-#kenapa-kami{position:relative;margin-top:-45px;padding:100px 0 85px;overflow:hidden;border-radius:55px 55px 0 0;z-index:5;background:radial-gradient(circle at top right,rgba(37,99,235,.10),transparent 32%),radial-gradient(circle at bottom left,rgba(59,130,246,.08),transparent 32%),linear-gradient(180deg,#eef6ff 0%,#fff 35%,#f9fbff 100%);}
-#kenapa-kami::before,#kenapa-kami::after{content:"";position:absolute;border-radius:50%;}
-#kenapa-kami::before{width:500px;height:500px;top:-220px;right:-180px;background:radial-gradient(circle,rgba(37,99,235,.10),transparent 70%);}
-#kenapa-kami::after{width:420px;height:420px;left:-170px;bottom:-170px;background:radial-gradient(circle,rgba(96,165,250,.10),transparent 70%);}
+
+/* ── KENAPA KAMI ───────────────────────────────── */
+#kenapa-kami {
+  position: relative;
+  margin-top: -25px;
+  padding: 30px 0 25px;
+  overflow: hidden;
+  border-radius: 25px 25px 0 0;
+  z-index: 5;
+  background:
+    radial-gradient(circle at top right, rgba(37,99,235,.10), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(59,130,246,.08), transparent 32%),
+    linear-gradient(180deg, #eef6ff 0%, #fff 35%, #f9fbff 100%);
+}
+
+#kenapa-kami::before,
+#kenapa-kami::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+#kenapa-kami::before {
+  width: 500px;
+  height: 500px;
+  top: -220px;
+  right: -180px;
+  background: radial-gradient(circle, rgba(37,99,235,.10), transparent 70%);
+}
+
+#kenapa-kami::after {
+  width: 420px;
+  height: 420px;
+  left: -170px;
+  bottom: -170px;
+  background: radial-gradient(circle, rgba(96,165,250,.10), transparent 70%);
+}
 
 /* ── GRID ─────────────────────────────────────── */
 .why-grid{
